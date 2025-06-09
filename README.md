@@ -13,7 +13,7 @@ Cómo se resolvió:
 Se implementó una lista de adyacencia para representar el grafo.
 Cada ciudad se representa como un vértice, y cada ruta como una arista con peso (distancia).
 Se aplicó el algoritmo de Dijkstra para encontrar la ruta más corta entre dos ciudades:
-Se utilizó una tabla Estado[] que almacena la distancia mínima a cada ciudad, el nodo anterior y si el nodo fue visitado.
+Se utilizó una tabla Estado que almacena la distancia mínima a cada ciudad, el nodo anterior y si el nodo fue visitado.
 Se eligió iterativamente el nodo con menor distancia no visitado.
 Se actualizó la distancia y la ciudad anterior de sus vecinos.
 Se reconstruyó la ruta una vez alcanzado el destino.
