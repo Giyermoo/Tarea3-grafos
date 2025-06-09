@@ -1,7 +1,19 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <limits.h>
 #include "processor.h"
+
+#define MAX_CIUDADES 100
+
+typedef struct {
+    char ciudad[4];
+    int distancia;
+    char anterior[4];
+    int visitado;
+} Estado;
+
+// ======================= CREACIÓN DEL GRAFO =========================
 
 Nodo* crear_nodo(const char* ciudad, int peso) {
     Nodo* nuevo = (Nodo*)malloc(sizeof(Nodo));
@@ -64,10 +76,7 @@ Grafo* crear_grafo_desde_archivo(const char* archivo) {
     return grafo;
 }
 
-void encontrar_ruta_minima(Grafo* grafo, const char* origen, const char* destino) {
-    printf("Grafo construido correctamente.\n");
-    printf("Ruta de prueba: %s -> %s (algoritmo no implementado aún)\n", origen, destino);
-}
+// ========================== LIBERAR MEMORIA ===========================
 
 void liberar_grafo(Grafo* grafo) {
     Vertice* actual = grafo->inicio;
@@ -85,16 +94,7 @@ void liberar_grafo(Grafo* grafo) {
     free(grafo);
 }
 
-#include <limits.h>
-
-#define MAX_CIUDADES 100
-
-typedef struct {
-    char ciudad[4];
-    int distancia;
-    char anterior[4];
-    int visitado;
-} Estado;
+// ========================== DIJKSTRA ===============================
 
 Vertice* buscar_vertice_por_nombre(Grafo* grafo, const char* ciudad) {
     Vertice* actual = grafo->inicio;
@@ -191,4 +191,5 @@ void encontrar_ruta_minima(Grafo* grafo, const char* origen, const char* destino
         }
     }
 
-    reconst
+    reconstruir_ruta(estados, count, origen, destino);
+}
